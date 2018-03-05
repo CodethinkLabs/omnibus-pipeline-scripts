@@ -19,10 +19,14 @@ build() {
   git clone "$omnibus_git_source" "$omnibus_source_path"
   cd "$omnibus_source_path"
 
-  OMNIBUS_GCC_GIT_REF="$omnibus_gcc_git_ref"                  \
-  omnibus build codethink-gcc                                 \
-  --log-level=unknown --override base_dir:./local workers:10  \
-  use_git_caching:false
+  OMNIBUS_GCC_GIT_REF="$omnibus_gcc_git_ref"      \
+    omnibus build codethink-gcc                   \
+    --log-level=unknown                           \
+    --override                                    \
+      base_dir:./local                            \
+      workers:10                                  \
+      append_timestamp:false                      \
+      use_git_caching:false
 }
 
 main() {
