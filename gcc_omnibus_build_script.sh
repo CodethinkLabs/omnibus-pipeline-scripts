@@ -6,6 +6,9 @@ omnibus_git_name="omnibus-codethink-toolchain"
 omnibus_git_source="https://github.com/CodethinkLabs/$omnibus_git_name.git"
 omnibus_gcc_git_ref=""
 omnibus_source_path="$HOME/$omnibus_git_name"
+omnibus_results_dir="$omnibus_source_path/pkg"
+
+build_artifacts_path="$HOME/codethink-gcc.tar.gz"
 
 usage() {
   cat <<EOF
@@ -17,8 +20,8 @@ EOF
 
 build() {
   git clone "$omnibus_git_source" "$omnibus_source_path"
-  cd "$omnibus_source_path"
 
+  pushd "$omnibus_source_path"
   OMNIBUS_GCC_GIT_REF="$omnibus_gcc_git_ref"      \
     omnibus build codethink-gcc                   \
     --log-level=unknown                           \
@@ -27,6 +30,9 @@ build() {
       workers:10                                  \
       append_timestamp:false                      \
       use_git_caching:false
+  popd
+
+  tar -czvf "$build_artifacts_path" -C "$omnibus_results_dir" .
 }
 
 main() {
