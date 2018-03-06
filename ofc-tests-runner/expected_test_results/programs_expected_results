@@ -55,7 +55,6 @@ implicit_sub_arg.f:pass
 inc.f:pass
 init.f:pass
 int8.f:pass
-int_name_star.f:pass
 intrinsic_func.f:pass
 intrinsic_ishft.f:pass
 int_str.f:pass
@@ -73,6 +72,7 @@ record.f:pass
 reshape.f:pass
 scope_label.f:pass
 semicolon.f:pass
+star_in_LHS.f:pass
 substring.f:pass
 type_basic.f:pass
 var_implicit_do.f:pass
