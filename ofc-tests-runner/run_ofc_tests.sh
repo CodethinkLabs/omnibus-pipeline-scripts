@@ -64,7 +64,7 @@ generate_actual() {
   echo -e "-Generate actual"
   local src_path="$1"
   local output_path="$2"
-  local compiler="/opt/codethink-toolchain/bin/gfortran"
+  local compiler="/opt/codethink-gcc/bin/gfortran"
   local compiler_args="-fdec -std=extra-legacy -frecursive -fno-automatic"
   compile "$src_path" "$output_path" "$compiler" "$compiler_args"
 }
